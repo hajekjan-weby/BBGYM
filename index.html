@@ -117,16 +117,11 @@
         */
         header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            /* ZVĚTŠENÝ PADDING (Prostor nad a pod) */
             padding: 25px 0;
             transition: 0.4s; background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        header.scrolled { 
-            /* Při scrollování se trochu zmenší, ale stále má prostor */
-            padding: 15px 0; 
-            background: rgba(5, 5, 5, 0.98); 
-        }
+        header.scrolled { padding: 15px 0; background: rgba(5, 5, 5, 0.98); }
         
         nav { display: flex; justify-content: space-between; align-items: center; }
         
@@ -136,15 +131,11 @@
 
         .nav-menu {
             display: flex; gap: 30px; align-items: center;
-            margin-left: auto;
-            margin-right: 40px; 
+            margin-left: auto; margin-right: 40px; 
         }
         
         .nav-link {
-            font-weight: 600; 
-            /* ZVĚTŠENÝ TEXT */
-            font-size: 1rem; 
-            text-transform: uppercase;
+            font-weight: 600; font-size: 1rem; text-transform: uppercase;
             position: relative; padding: 5px 0; color: #fff; letter-spacing: 0.5px;
         }
         .nav-link::after {
@@ -217,6 +208,7 @@
 
         .pricing-section { background-color: #0f0f0f; }
         .pricing-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; align-items: stretch; }
+        
         .price-card {
             flex: 1; min-width: 280px; max-width: 350px; background: var(--color-bg-card);
             border-radius: 15px; padding: 40px 30px; text-align: center; position: relative;
@@ -233,8 +225,12 @@
             background: var(--color-primary); color: #000; padding: 5px 20px;
             border-radius: 20px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;
         }
+        
+        .price-header {
+            min-height: 160px; display: flex; flex-direction: column; justify-content: flex-start; margin-bottom: 20px;
+        }
         .price-header h3 { font-size: 1.4rem; color: #fff; margin-bottom: 10px; }
-        .price-header .price { font-size: 3rem; font-weight: 800; color: var(--color-primary); display: block; margin: 20px 0; }
+        .price-header .price { font-size: 3rem; font-weight: 800; color: var(--color-primary); display: block; margin: auto 0; }
         .price-header .price span { font-size: 1rem; color: var(--color-text-muted); font-weight: 400; }
         .price-features { list-style: none; margin-bottom: 30px; flex-grow: 1; text-align: left; }
         .price-features li { margin-bottom: 12px; color: var(--color-text-muted); font-size: 0.95rem; display: flex; align-items: center; }
@@ -320,21 +316,19 @@
         .trainer-role { color: var(--color-primary); font-weight: 600; margin-bottom: 25px; display: block; }
         
         /* ========================================
-         7. KONTAKT - PŮVODNÍ LAYOUT
+         7. KONTAKT - GRID LAYOUT
          ========================================
         */
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1.5fr; /* Layout vedle sebe */
+            grid-template-columns: 1fr 1.5fr; /* Info vlevo, Formulář vpravo */
             gap: 50px;
             background: var(--color-bg-card); padding: 50px; border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
         .contact-info-box {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: flex; flex-direction: column; gap: 20px;
         }
 
         .icon-box {
@@ -348,16 +342,22 @@
         .info-text a:hover { color: var(--color-primary); text-decoration: underline; }
 
         .map-container {
-            width: 100%; height: 250px; margin-top: 20px; border-radius: 10px; overflow: hidden;
+            width: 100%; height: 250px; margin-top: 10px; border-radius: 10px; overflow: hidden;
             border: 1px solid #333; filter: grayscale(100%) contrast(1.2); transition: 0.5s;
         }
         .map-container:hover { filter: grayscale(0%); border-color: var(--color-primary); }
 
+        /* FORMULÁŘ - VYCENTROVANÝ VPRAVO */
         .contact-form {
-    width: 100%;
-    align-self: center; /* Toto vycentruje formulář na výšku */
-}
-        
+            width: 100%;
+            max-width: 700px;
+            background: rgba(255,255,255,0.02);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            align-self: center; /* Vertikální centrování v Grid buňce */
+        }
+
         .form-control {
             width: 100%; padding: 15px; margin-bottom: 20px; background: #0a0a0a;
             border: 1px solid #333; color: #fff; border-radius: 5px; font-family: var(--font-body); transition: 0.3s;
@@ -379,8 +379,6 @@
         .footer-col p { color: #a0a0a0; }
         
         .copyright { text-align: center; padding-top: 30px; border-top: 1px solid #222; color: #555; font-size: 0.8rem; }
-        
-        /* Styl pro odkaz Kejha.dev */
         .copyright a { color: var(--color-primary); text-decoration: none; font-weight: 600; transition: 0.3s; }
         .copyright a:hover { color: #fff; }
 
@@ -420,7 +418,7 @@
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .contact-container { grid-template-columns: 1fr; padding: 30px; }
+            .contact-container { grid-template-columns: 1fr; padding: 30px; } /* Na mobilu pod sebe */
             .pricing-card.featured { transform: scale(1); }
         }
     </style>
@@ -448,7 +446,7 @@
                     <li><a href="#lektori" class="nav-link">Tým</a></li>
                     <li><a href="#galerie" class="nav-link">Galerie</a></li>
                     <li><a href="#recenze" class="nav-link">Reference</a></li>
-                    <li><a href="#kontakt" class="btn btn-filled" style="padding: 8px 25px; border:none; border-radius:4px;">Rezervace</a></li>
+                    <li><a href="#cenik" class="btn btn-filled" style="padding: 8px 25px; border:none; border-radius:4px;">Rezervace</a></li>
                 </ul>
                 <div class="hamburger"><i class="fas fa-bars"></i></div>
             </nav>
@@ -463,7 +461,7 @@
                 <p>Exkluzivní fitness v Kladně. Max 4 lidé, špičkový trenérský dohled a prostor jen pro tebe.</p>
                 <div style="margin-top: 30px;">
                     <a href="#cenik" class="btn">Prohlédnout Ceník</a>
-                    <a href="#kontakt" class="btn btn-filled" style="margin-left: 15px;">Chci začít</a>
+                    <a href="#cenik" class="btn btn-filled" style="margin-left: 15px;">Chci začít</a>
                 </div>
             </div>
         </div>
@@ -487,28 +485,98 @@
     <section id="cenik" class="pricing-section">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Ceník <span>Tréninků</span></h2>
-                <p>Transparentní ceny. Platíš za kvalitu a čas trenéra.</p>
+                <h2>Ceník <span>Permanentek</span></h2>
+                <p>U nás neplatíš jednorázově. Vyber si permanentku nebo kreditní balíček. Vše jednoduše online.</p>
             </div>
+
             <div class="pricing-grid">
+                
                 <div class="price-card reveal">
-                    <div class="price-header"><h3>Skupinová Lekce</h3><span class="price">250,- <span>CZK</span></span><p style="font-size:0.9rem; color:#888;">Cena za osobu</p></div>
-                    <ul class="price-features"><li><i class="fas fa-check"></i> Max. 4 osoby v gymu</li><li><i class="fas fa-check"></i> Trenérský dohled</li><li><i class="fas fa-check"></i> Motivace týmu</li><li><i class="fas fa-check"></i> Délka 60 min</li></ul><a href="#kontakt" class="btn">Rezervovat</a>
+                    <div class="price-header">
+                        <h3>Permanentka Skupina</h3>
+                        <span class="price">2 500,- <span>CZK</span></span>
+                        <p style="font-size:0.9rem; color:#888;">Balíček 10 vstupů</p>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> <strong>10 Vstupů</strong> na skupinové lekce</li>
+                        <li><i class="fas fa-check"></i> Vychází na 250 Kč / lekce</li>
+                        <li><i class="fas fa-times" style="color:#ff4444;"></i> Nelze využít na osobní tréninky</li>
+                        <li><i class="fas fa-check"></i> Rezervace přes systém</li>
+                    </ul>
+                    <a href="https://bbgym.isportsystem.cz/" target="_blank" class="btn">Koupit v systému</a>
                 </div>
+
+                <div class="price-card reveal">
+                    <div class="price-header">
+                        <h3>Kreditní Start</h3>
+                        <span class="price">3 000,- <span>CZK</span></span>
+                        <p style="font-size:0.9rem; color:#888;">3000 Kreditů</p>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> <strong>Nabito 3000 Kreditů</strong></li>
+                        <li><i class="fas fa-check"></i> Platí na <strong>VŠE</strong> (Skupiny i Osobní)</li>
+                        <li><i class="fas fa-check"></i> Flexibilní čerpání</li>
+                        <li><i class="fas fa-check"></i> Ideální pro start</li>
+                    </ul>
+                    <a href="https://bbgym.isportsystem.cz/" target="_blank" class="btn">Koupit v systému</a>
+                </div>
+
                 <div class="price-card featured reveal">
-                    <span class="badge-popular">Doporučujeme</span>
-                    <div class="price-header"><h3>Osobní Trénink 1:1</h3><span class="price">600,- <span>CZK</span></span><p style="font-size:0.9rem; color:#888;">VIP Přístup</p></div>
-                    <ul class="price-features"><li><i class="fas fa-check"></i> Trenér + Klient</li><li><i class="fas fa-check"></i> 100% Soukromí</li><li><i class="fas fa-check"></i> Individuální plán</li><li><i class="fas fa-check"></i> Diagnostika</li></ul><a href="#kontakt" class="btn btn-filled">Chci VIP</a>
-                </div>
-                <div class="price-card reveal">
-                    <div class="price-header"><h3>Dvojice (1:2)</h3><span class="price">450,- <span>CZK</span></span><p style="font-size:0.9rem; color:#888;">Cena za osobu</p></div>
-                    <ul class="price-features"><li><i class="fas fa-check"></i> Trenér + 2 klienti</li><li><i class="fas fa-check"></i> Ideální pro páry</li><li><i class="fas fa-check"></i> Sdílená motivace</li><li><i class="fas fa-check"></i> Výhodnější cena</li></ul><a href="#kontakt" class="btn">Rezervovat</a>
-                </div>
-                <div class="price-card reveal">
-                    <div class="price-header"><h3>Trojice (1:3)</h3><span class="price">350,- <span>CZK</span></span><p style="font-size:0.9rem; color:#888;">Cena za osobu</p></div>
-                    <ul class="price-features"><li><i class="fas fa-check"></i> Trenér + 3 klienti</li><li><i class="fas fa-check"></i> Zábavná forma</li><li><i class="fas fa-check"></i> Dostatek prostoru</li><li><i class="fas fa-check"></i> Super cena</li></ul><a href="#kontakt" class="btn">Rezervovat</a>
+                    <span class="badge-popular">BONUS +600 KREDITŮ</span>
+                    <div class="price-header">
+                        <h3>VIP Kredit</h3>
+                        <span class="price">6 000,- <span>CZK</span></span>
+                        <p style="font-size:0.9rem; color:#888;">6600 Kreditů celkem</p>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> <strong>Nabito 6600 Kreditů</strong></li>
+                        <li><i class="fas fa-check"></i> 600 Kč dostaneš jako <strong>DÁREK</strong></li>
+                        <li><i class="fas fa-check"></i> Platí na <strong>VŠE</strong> (Skupiny i Osobní)</li>
+                        <li><i class="fas fa-check"></i> Nejvýhodnější volba</li>
+                    </ul>
+                    <a href="https://bbgym.isportsystem.cz/" target="_blank" class="btn btn-filled">Chci VIP Bonus</a>
                 </div>
             </div>
+
+            <div class="reveal" style="margin-top: 60px; background: var(--color-bg-card); padding: 40px 30px; border-radius: 10px; border: 1px solid #333;">
+                <h3 style="text-align:center; color:#fff; margin-bottom: 30px;">Kolik se strhává za trénink?</h3>
+                
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; text-align: center; margin-bottom: 40px;">
+                    
+                    <div style="flex: 1; min-width: 200px;">
+                        <i class="fas fa-users" style="color:var(--color-primary); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                        <h4 style="color:#fff; margin-bottom: 5px;">Skupinová lekce</h4>
+                        <p style="color:#aaa;">1 Vstup<br><small>(nebo 250 kreditů)</small></p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 200px; border-left: 1px solid #333; border-right: 1px solid #333;">
+                        <i class="fas fa-people-group" style="color:var(--color-primary); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                        <h4 style="color:#fff; margin-bottom: 5px;">Osobní 1:3</h4>
+                        <p style="color:#aaa;">350 kreditů / os.</p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 200px; border-right: 1px solid #333;">
+                        <i class="fas fa-user-group" style="color:var(--color-primary); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                        <h4 style="color:#fff; margin-bottom: 5px;">Osobní 1:2</h4>
+                        <p style="color:#aaa;">450 kreditů / os.</p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 200px;">
+                        <i class="fas fa-user" style="color:var(--color-primary); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                        <h4 style="color:#fff; margin-bottom: 5px;">Osobní 1:1</h4>
+                        <p style="color:#aaa;">600 kreditů</p>
+                    </div>
+
+                </div>
+                
+                <div style="text-align: center;">
+                    <p style="color: #ccc; margin-bottom: 20px;">Jsi připraven? Nakup permanentku a rezervuj si termín.</p>
+                    <a href="https://bbgym.isportsystem.cz/" target="_blank" class="btn btn-filled" style="padding: 20px 50px; font-size: 1.2rem; box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);">
+                        PŘEJÍT DO REZERVAČNÍHO SYSTÉMU
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -538,7 +606,7 @@
                 <div class="gallery-item reveal" data-index="6"><img src="images/foto8.jpeg" alt="BBgym 8"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
                 <div class="gallery-item reveal" data-index="7"><img src="images/foto9.jpeg" alt="BBgym 9"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
                 <div class="gallery-item reveal" data-index="8"><img src="images/foto10.jpeg" alt="BBgym 10"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
-                </div>
+            </div>
         </div>
     </section>
 
@@ -565,21 +633,23 @@
 
             <div class="contact-container reveal">
                 <div class="contact-info-box">
-                    <div class="info-row">
-                        <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="info-text"><h4>Adresa</h4><a href="https://maps.google.com/?q=Dělnická+234,+Kladno" target="_blank">Dělnická 234, 272 01 Kladno<br>Czech Republic</a></div>
-                    </div>
-                    <div class="info-row">
-                        <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
-                        <div class="info-text"><h4>Mobil</h4><a href="tel:+420606333903">+420 606 333 903</a></div>
-                    </div>
-                    <div class="info-row">
-                        <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
-                        <div class="info-text"><h4>WhatsApp</h4><a href="https://wa.me/420606333903" target="_blank">+420 606 333 903</a></div>
-                    </div>
-                    <div class="info-row">
-                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                        <div class="info-text"><h4>Email</h4><a href="mailto:filiptokarcik@seznam.cz">filiptokarcik@seznam.cz</a></div>
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="info-row">
+                            <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="info-text"><h4>Adresa</h4><a href="https://maps.google.com/?q=Dělnická+234,+Kladno" target="_blank">Dělnická 234, 272 01 Kladno<br>Czech Republic</a></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
+                            <div class="info-text"><h4>Mobil</h4><a href="tel:+420606333903">+420 606 333 903</a></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
+                            <div class="info-text"><h4>WhatsApp</h4><a href="https://wa.me/420606333903" target="_blank">+420 606 333 903</a></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                            <div class="info-text"><h4>Email</h4><a href="mailto:filiptokarcik@seznam.cz">filiptokarcik@seznam.cz</a></div>
+                        </div>
                     </div>
 
                     <div class="map-container">
@@ -588,16 +658,11 @@
                 </div>
 
                 <div class="contact-form">
+                    <h3 style="text-align:center; margin-bottom:20px; color:white;">Napiš nám</h3>
                     <form>
                         <input type="text" class="form-control" placeholder="Tvé jméno" required>
                         <input type="email" class="form-control" placeholder="Tvůj email" required>
-                        <select class="form-control">
-                            <option value="" disabled selected>O jaký trénink máš zájem?</option>
-                            <option value="skupina">Skupinová lekce (250,-)</option>
-                            <option value="1:1">Osobní 1:1 (600,-)</option>
-                            <option value="1:2">Dvojice 1:2 (450,-/os)</option>
-                            <option value="1:3">Trojice 1:3 (350,-/os)</option>
-                        </select>
+                        <input type="text" class="form-control" placeholder="Předmět zprávy (na co se chceš zeptat?)" required>
                         <textarea class="form-control" placeholder="Zpráva..."></textarea>
                         <button type="submit" class="btn btn-filled" style="width: 100%;">Odeslat</button>
                     </form>
@@ -717,14 +782,13 @@
             });
         });
 
-        // LIGHTBOX FUNKCIONALITA
+        // LIGHTBOX
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const galleryItems = document.querySelectorAll('.gallery-item');
         const galleryImages = document.querySelectorAll('.gallery-item img');
         let currentImageIndex = 0;
 
-        // Otevřít
         galleryItems.forEach((item, index) => {
             item.addEventListener('click', () => {
                 currentImageIndex = index;
@@ -735,13 +799,10 @@
         function openLightbox() {
             lightboxImg.src = galleryImages[currentImageIndex].src;
             lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Zamezí scrollování body
+            document.body.style.overflow = 'hidden';
         }
 
-        // Zavřít
         document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-        
-        // Zavřít při kliku mimo obrázek
         lightbox.addEventListener('click', (e) => {
             if(e.target === lightbox) closeLightbox();
         });
@@ -751,7 +812,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Další / Předchozí
         document.getElementById('lightbox-next').addEventListener('click', showNextImage);
         document.getElementById('lightbox-prev').addEventListener('click', showPrevImage);
 
@@ -767,14 +827,12 @@
             lightboxImg.src = galleryImages[currentImageIndex].src;
         }
         
-        // Klávesnice ovládání
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('active')) return;
             if (e.key === 'Escape') closeLightbox();
             if (e.key === 'ArrowRight') showNextImage();
             if (e.key === 'ArrowLeft') showPrevImage();
         });
-
     </script>
 </body>
 </html>
