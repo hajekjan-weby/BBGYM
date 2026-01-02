@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
+           <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BBgym Kladno - Exkluzivní soukromé fitness centrum. Osobní tréninky, kruhové tréninky, individuální přístup. Dělnická 234, Kladno.">
-    <title>BBgym Kladno | Premium Private Fitness</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
+    <title>BBgym Kladno | Exkluzivní soukromé fitness & Osobní trenér</title>
+    <meta name="description" content="Hledáš fitness v Kladně bez davů? BBgym nabízí 100% soukromí (max 4 lidé), osobní i skupinové tréninky a individuální přístup. Rezervuj si trénink online!">
+    <meta name="keywords" content="fitness Kladno, posilovna Kladno, osobní trenér Kladno, soukromé fitko, kruhový trénink, BBgym, cvičení pro ženy, silový trénink">
+    <meta name="author" content="Kejha.dev">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bbgym-kladno.cz/">
+    <meta property="og:title" content="BBgym Kladno | Tvé soukromé fitko">
+    <meta property="og:description" content="Žádné davy, jen ty a tvůj progres. Maximálně 4 lidé v gymu. Osobní a skupinové tréninky v Kladně.">
+    <meta property="og:image" content="images/foto1.jpeg">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -131,7 +147,8 @@
 
         .nav-menu {
             display: flex; gap: 30px; align-items: center;
-            margin-left: auto; margin-right: 40px; 
+            margin-left: auto;
+            margin-right: 40px; 
         }
         
         .nav-link {
@@ -186,16 +203,47 @@
         }
 
         /* ========================================
-         4. SLUŽBY & CENÍK
+         4. SLUŽBY - GRID LAYOUT (1. položka přes celou šířku)
          ========================================
         */
         section { padding: 100px 0; }
-        .services-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .services-wrapper { 
+            display: grid; 
+            /* 3 sloupce na desktopu */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+        }
         
         .service-card {
             background: var(--color-bg-card); padding: 40px; border-radius: var(--border-radius);
             transition: var(--transition-speed); position: relative; overflow: hidden; border: 1px solid transparent;
+            display: flex; flex-direction: column; justify-content: flex-start;
         }
+
+        /* ZMĚNA: První položka (Osobní trénink) přes celou šířku */
+        .service-card:nth-child(1) {
+            grid-column: 1 / -1; /* Roztažení přes všechny sloupce */
+            background: linear-gradient(135deg, #1f1f1f 0%, #111 100%); /* Trochu odlišné pozadí */
+            border: 1px solid var(--color-primary); /* Zvýrazněný rámeček */
+            flex-direction: row; /* Obsah vedle sebe */
+            align-items: center;
+            text-align: left;
+        }
+
+        /* Ikona u první položky */
+        .service-card:nth-child(1) i {
+            margin-bottom: 0;
+            margin-right: 30px;
+            font-size: 4rem;
+        }
+
+        /* Obsah u první položky */
+        .service-card:nth-child(1) h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
         .service-card:hover { transform: translateY(-10px); border-color: var(--color-primary); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .service-card i { font-size: 3rem; color: var(--color-primary); margin-bottom: 25px; display: inline-block; }
         .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
@@ -206,6 +254,7 @@
         }
         .service-card:hover::before { color: rgba(0, 255, 136, 0.05); }
 
+        /* CENÍK */
         .pricing-section { background-color: #0f0f0f; }
         .pricing-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; align-items: stretch; }
         
@@ -415,11 +464,24 @@
             }
             .nav-menu.active { right: 0; }
             .hamburger { display: block; }
+            
+            /* Na tabletu bude první karta taky normálně, nebo přes 2 sloupce */
+            .services-wrapper { grid-template-columns: 1fr 1fr; }
+            .service-card:nth-child(1) { grid-column: span 2; }
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .contact-container { grid-template-columns: 1fr; padding: 30px; } /* Na mobilu pod sebe */
             .pricing-card.featured { transform: scale(1); }
+            
+            /* Na mobilu vše pod sebe */
+            .services-wrapper { grid-template-columns: 1fr; }
+            .service-card:nth-child(1) { 
+                grid-column: span 1; 
+                flex-direction: column; 
+                text-align: center;
+            }
+            .service-card:nth-child(1) i { margin-right: 0; margin-bottom: 20px; }
         }
     </style>
 </head>
@@ -456,9 +518,17 @@
     <section id="domu" class="hero">
         <div class="container">
             <div class="hero-content reveal">
-                <span class="hero-badge">Soukromá posilovna</span>
+                <span class="hero-badge">Specializace na 1:1 tréninky</span>
                 <h1>Žádné fronty.<br>Žádné kompromisy.</h1>
-                <p>Exkluzivní fitness v Kladně. Max 4 lidé, špičkový trenérský dohled a prostor jen pro tebe.</p>
+                <p>
+                    Upřednostňujeme <strong>osobní tréninky 1:1</strong> v  soukromí, kde potkáš maximálně 4 lidi.
+                    <br><br>
+                    <span style="color: #fff; font-weight: 600;">
+                        <i class="fas fa-check" style="color: var(--color-primary); margin-right: 8px;"></i>
+                        Konzultace a první trénink ZDARMA.
+                    </span><br>
+                    Je fér si to nejdříve nezávazně zkusit a pak se rozhodnout.
+                </p>
                 <div style="margin-top: 30px;">
                     <a href="#cenik" class="btn">Prohlédnout Ceník</a>
                     <a href="#cenik" class="btn btn-filled" style="margin-left: 15px;">Chci začít</a>
@@ -475,9 +545,44 @@
                 <p>Nenabízíme jen stroje, nabízíme cestu k výsledkům.</p>
             </div>
             <div class="services-wrapper">
-                <div class="service-card reveal" data-number="01"><i class="fas fa-dumbbell"></i><h3>Silový trénink</h3><p>Technika dřepu, mrtvého tahu a benchpressu pod drobnohledem pro maximální sílu bez zranění.</p></div>
-                <div class="service-card reveal" data-number="02"><i class="fas fa-heart-pulse"></i><h3>Kruhový trénink</h3><p>Intenzivní tréninky zaměřené na pálení tuků a zvyšování kondice.</p></div>
-                <div class="service-card reveal" data-number="03"><i class="fas fa-user-doctor"></i><h3>Diagnostika</h3><p>Odhalíme svalové dysbalance a připravíme plán na jejich odstranění.</p></div>
+                <div class="service-card reveal" data-number="01">
+                    <i class="fas fa-user-ninja"></i>
+                    <div>
+                        <h3>Osobní trénink*</h3>
+                        <p>Individuální přístup šitý na míru tvým cílům, možnostem i potřebám.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card reveal" data-number="02">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Skupinový silový trénink</h3>
+                    <p>Trénink zaměřený na budování síly ve skupině s vedením trenéra.</p>
+                </div>
+                <div class="service-card reveal" data-number="03">
+                    <i class="fas fa-arrows-spin"></i>
+                    <h3>Skupinový kruhový trénink</h3>
+                    <p>Dynamické cvičení s pestrými stanovišti pro zlepšení kondice i síly.</p>
+                </div>
+                <div class="service-card reveal" data-number="04">
+                    <i class="fas fa-fire"></i>
+                    <h3>Skupinový trénink na hýždě</h3>
+                    <p>Speciálně zaměřený trénink pro formování a posílení hýžďových svalů.</p>
+                </div>
+                <div class="service-card reveal" data-number="05">
+                    <i class="fas fa-shield-halved"></i>
+                    <h3>Skupinový trénink na core a břicho</h3>
+                    <p>Efektivní trénink středu těla pro pevné břicho a zdravá záda.</p>
+                </div>
+                <div class="service-card reveal" data-number="06">
+                    <i class="fas fa-stopwatch"></i>
+                    <h3>Skupinový HIIT trénink</h3>
+                    <p>Vysoce intenzivní intervalový trénink pro spalování tuků a zlepšení kondice.</p>
+                </div>
+                <div class="service-card reveal" data-number="07">
+                    <i class="fas fa-heart-pulse"></i>
+                    <h3>Skupinový kompenzační trénink</h3>
+                    <p>Cvičení pro regeneraci, uvolnění a odstranění svalových dysbalancí.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -486,7 +591,9 @@
         <div class="container">
             <div class="section-header reveal">
                 <h2>Ceník <span>Permanentek</span></h2>
-                <p>U nás neplatíš jednorázově. Vyber si permanentku nebo kreditní balíček. Vše jednoduše online.</p>
+                <p>
+                    Vyber si permanentku nebo kreditní balíček, který ti sedí nejvíc. Vše jednoduše online.
+                </p>
             </div>
 
             <div class="pricing-grid">
@@ -538,7 +645,14 @@
                 </div>
             </div>
 
-            <div class="reveal" style="margin-top: 60px; background: var(--color-bg-card); padding: 40px 30px; border-radius: 10px; border: 1px solid #333;">
+            <div class="reveal" style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+                <div style="display: inline-block; background: rgba(0, 255, 136, 0.1); border: 1px solid var(--color-primary); padding: 15px 30px; border-radius: 50px; box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);">
+                    <i class="fas fa-gift" style="color: var(--color-primary); margin-right: 10px; font-size: 1.2rem;"></i>
+                    <span style="color: #fff; font-weight: 500;">Nechceš kupovat zajíce v pytli? <strong>Úvodní konzultace a trénink jsou ZDARMA!</strong></span>
+                </div>
+            </div>
+
+            <div class="reveal" style="margin-top: 40px; background: var(--color-bg-card); padding: 40px 30px; border-radius: 10px; border: 1px solid #333;">
                 <h3 style="text-align:center; color:#fff; margin-bottom: 30px;">Kolik se strhává za trénink?</h3>
                 
                 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; text-align: center; margin-bottom: 40px;">
@@ -606,7 +720,7 @@
                 <div class="gallery-item reveal" data-index="6"><img src="images/foto8.jpeg" alt="BBgym 8"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
                 <div class="gallery-item reveal" data-index="7"><img src="images/foto9.jpeg" alt="BBgym 9"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
                 <div class="gallery-item reveal" data-index="8"><img src="images/foto10.jpeg" alt="BBgym 10"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
-            </div>
+                </div>
         </div>
     </section>
 
@@ -693,7 +807,7 @@
                     <h4>Sleduj nás</h4>
                     <div class="socials">
                         <a href="https://www.facebook.com/BBGYM.Kladno" target="_blank" class="social-link fb"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link ig"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/bbgymkladno/" class="social-link ig"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
