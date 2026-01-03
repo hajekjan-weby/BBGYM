@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-           <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
@@ -29,8 +29,8 @@
 
     <style>
         /* ========================================
-         1. ZÁKLADNÍ NASTAVENÍ
-         ========================================
+          1. ZÁKLADNÍ NASTAVENÍ
+          ========================================
         */
         :root {
             --color-primary: #00ff88;      
@@ -128,8 +128,8 @@
         }
 
         /* ========================================
-         2. HEADER & NAVIGACE
-         ========================================
+          2. HEADER & NAVIGACE
+          ========================================
         */
         header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
@@ -166,8 +166,8 @@
         .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: #fff; z-index: 1002; }
 
         /* ========================================
-         3. HERO SECTION
-         ========================================
+          3. HERO SECTION
+          ========================================
         */
         .hero {
             height: 100vh; width: 100%;
@@ -203,14 +203,13 @@
         }
 
         /* ========================================
-         4. SLUŽBY - GRID LAYOUT (1. položka přes celou šířku)
-         ========================================
+          4. SLUŽBY - GRID LAYOUT
+          ========================================
         */
         section { padding: 100px 0; }
         
         .services-wrapper { 
             display: grid; 
-            /* 3 sloupce na desktopu */
             grid-template-columns: repeat(3, 1fr); 
             gap: 30px; 
         }
@@ -221,24 +220,21 @@
             display: flex; flex-direction: column; justify-content: flex-start;
         }
 
-        /* ZMĚNA: První položka (Osobní trénink) přes celou šířku */
         .service-card:nth-child(1) {
-            grid-column: 1 / -1; /* Roztažení přes všechny sloupce */
-            background: linear-gradient(135deg, #1f1f1f 0%, #111 100%); /* Trochu odlišné pozadí */
-            border: 1px solid var(--color-primary); /* Zvýrazněný rámeček */
-            flex-direction: row; /* Obsah vedle sebe */
+            grid-column: 1 / -1; 
+            background: linear-gradient(135deg, #1f1f1f 0%, #111 100%);
+            border: 1px solid var(--color-primary);
+            flex-direction: row; 
             align-items: center;
             text-align: left;
         }
 
-        /* Ikona u první položky */
         .service-card:nth-child(1) i {
             margin-bottom: 0;
             margin-right: 30px;
             font-size: 4rem;
         }
 
-        /* Obsah u první položky */
         .service-card:nth-child(1) h3 {
             font-size: 2rem;
             margin-bottom: 10px;
@@ -285,17 +281,13 @@
         .price-features li { margin-bottom: 12px; color: var(--color-text-muted); font-size: 0.95rem; display: flex; align-items: center; }
         .price-features li i { color: var(--color-primary); margin-right: 10px; font-size: 0.8rem; }
 
-        /* ========================================
-         5. GALERIE & REFERENCE & LIGHTBOX
-         ========================================
-        */
+        /* GALERIE */
         #galerie { background-color: var(--color-bg-body); }
         .gallery-grid {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             grid-auto-rows: 250px; gap: 15px; padding: 20px 0;
         }
         .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-        @media (max-width: 768px) { .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; } }
         .gallery-item { position: relative; overflow: hidden; border-radius: 5px; cursor: pointer; border: 1px solid #222; }
         .gallery-item img {
             width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: grayscale(80%);
@@ -308,7 +300,7 @@
         .gallery-item:hover .overlay { opacity: 1; }
         .overlay i { font-size: 2rem; color: var(--color-primary); }
 
-        /* LIGHTBOX STYLES */
+        /* LIGHTBOX */
         .lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); z-index: 2000;
@@ -317,16 +309,9 @@
         }
         .lightbox.active { display: flex; opacity: 1; }
         .lightbox img { max-width: 90%; max-height: 85%; border: 2px solid var(--color-primary); box-shadow: 0 0 50px rgba(0,255,136,0.2); }
-        
-        .lightbox-close {
-            position: absolute; top: 20px; right: 30px; font-size: 2rem; color: #fff; cursor: pointer; transition: 0.3s;
-        }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 2rem; color: #fff; cursor: pointer; transition: 0.3s; }
         .lightbox-close:hover { color: var(--color-primary); transform: rotate(90deg); }
-        
-        .lightbox-nav {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            font-size: 3rem; color: #fff; cursor: pointer; padding: 20px; transition: 0.3s;
-        }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); font-size: 3rem; color: #fff; cursor: pointer; padding: 20px; transition: 0.3s; }
         .lightbox-nav:hover { color: var(--color-primary); }
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
@@ -349,10 +334,7 @@
         .slider-dot { width: 12px; height: 12px; background: #444; border-radius: 50%; cursor: pointer; transition: 0.3s; }
         .slider-dot.active { background: var(--color-primary); transform: scale(1.3); box-shadow: 0 0 10px var(--color-primary); }
 
-        /* ========================================
-         6. LEKTOŘI
-         ========================================
-        */
+        /* LEKTOŘI */
         .trainer-card {
             background: var(--color-bg-light); display: flex; flex-direction: row; 
             overflow: hidden; border-radius: var(--border-radius); margin-bottom: 30px;
@@ -364,95 +346,68 @@
         .trainer-content h3 { font-size: 2.5rem; margin-bottom: 5px; color: #fff; }
         .trainer-role { color: var(--color-primary); font-weight: 600; margin-bottom: 25px; display: block; }
         
-        /* ========================================
-         7. KONTAKT - GRID LAYOUT
-         ========================================
-        */
+        /* KONTAKT */
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1.5fr; /* Info vlevo, Formulář vpravo */
+            grid-template-columns: 1fr 1.5fr;
             gap: 50px;
             background: var(--color-bg-card); padding: 50px; border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
-
-        .contact-info-box {
-            display: flex; flex-direction: column; gap: 20px;
-        }
-
-        .icon-box {
-            width: 50px; height: 50px; background: rgba(0, 255, 136, 0.1);
-            color: var(--color-primary); display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; margin-right: 20px; flex-shrink: 0; font-size: 1.2rem;
-        }
+        .contact-info-box { display: flex; flex-direction: column; gap: 20px; }
+        .icon-box { width: 50px; height: 50px; background: rgba(0, 255, 136, 0.1); color: var(--color-primary); display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 20px; flex-shrink: 0; font-size: 1.2rem; }
         .info-row { display: flex; align-items: flex-start; }
         .info-text h4 { color: #fff; margin-bottom: 5px; }
         .info-text p, .info-text a { color: var(--color-text-muted); font-size: 0.95rem; display: block; }
         .info-text a:hover { color: var(--color-primary); text-decoration: underline; }
-
-        .map-container {
-            width: 100%; height: 250px; margin-top: 10px; border-radius: 10px; overflow: hidden;
-            border: 1px solid #333; filter: grayscale(100%) contrast(1.2); transition: 0.5s;
-        }
+        .map-container { width: 100%; height: 250px; margin-top: 10px; border-radius: 10px; overflow: hidden; border: 1px solid #333; filter: grayscale(100%) contrast(1.2); transition: 0.5s; }
         .map-container:hover { filter: grayscale(0%); border-color: var(--color-primary); }
-
-        /* FORMULÁŘ - VYCENTROVANÝ VPRAVO */
-        .contact-form {
-            width: 100%;
-            max-width: 700px;
-            background: rgba(255,255,255,0.02);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            align-self: center; /* Vertikální centrování v Grid buňce */
-        }
-
-        .form-control {
-            width: 100%; padding: 15px; margin-bottom: 20px; background: #0a0a0a;
-            border: 1px solid #333; color: #fff; border-radius: 5px; font-family: var(--font-body); transition: 0.3s;
-        }
+        .contact-form { width: 100%; max-width: 700px; background: rgba(255,255,255,0.02); padding: 30px; border-radius: 10px; border: 1px solid #333; align-self: center; }
+        .form-control { width: 100%; padding: 15px; margin-bottom: 20px; background: #0a0a0a; border: 1px solid #333; color: #fff; border-radius: 5px; font-family: var(--font-body); transition: 0.3s; }
         .form-control:focus { border-color: var(--color-primary); outline: none; box-shadow: 0 0 10px rgba(0, 255, 136, 0.1); }
         textarea.form-control { resize: vertical; min-height: 150px; }
 
-        /* ========================================
-         8. FOOTER
-         ========================================
-        */
+        /* FOOTER */
         footer { background: #050505; padding: 80px 0 30px; border-top: 1px solid #222; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; }
         .footer-col h4 { color: #fff; margin-bottom: 25px; font-size: 1.2rem; }
         .footer-links li { margin-bottom: 15px; }
         .footer-links a { color: #888; transition: 0.3s; }
         .footer-links a:hover { color: var(--color-primary); padding-left: 5px; }
-        
         .footer-col p { color: #a0a0a0; }
-        
         .copyright { text-align: center; padding-top: 30px; border-top: 1px solid #222; color: #555; font-size: 0.8rem; }
         .copyright a { color: var(--color-primary); text-decoration: none; font-weight: 600; transition: 0.3s; }
         .copyright a:hover { color: #fff; }
-
         .socials { display: flex; gap: 15px; }
-        .social-link {
-            width: 45px; height: 45px; display: flex; justify-content: center; align-items: center;
-            border-radius: 50%; background: #222; color: #fff; transition: 0.3s; font-size: 1.2rem;
-        }
+        .social-link { width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; border-radius: 50%; background: #222; color: #fff; transition: 0.3s; font-size: 1.2rem; }
         .social-link:hover { transform: translateY(-3px); }
-        
-        .social-link.fb, .social-link.ig {
-            background: var(--color-primary); color: #000;
-            box-shadow: 0 0 15px var(--color-primary); animation: glow 2s infinite alternate;
-        }
-        @keyframes glow {
-            from { box-shadow: 0 0 5px var(--color-primary); }
-            to { box-shadow: 0 0 20px var(--color-primary); }
-        }
+        .social-link.fb, .social-link.ig { background: var(--color-primary); color: #000; box-shadow: 0 0 15px var(--color-primary); animation: glow 2s infinite alternate; }
+        @keyframes glow { from { box-shadow: 0 0 5px var(--color-primary); } to { box-shadow: 0 0 20px var(--color-primary); } }
 
         /* Reveal Animation */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Media Queries */
+        /* ========================================
+          MEDIA QUERIES - OPRAVA PŘEKRÝVÁNÍ
+          ========================================
+        */
         @media (max-width: 992px) {
+            /* PŘIDÁNO: Odsazení hero sekce, aby nebyla pod fixním navbarem */
+            @media (max-width: 992px) {
+    .hero { 
+        padding-top: 140px; /* Zvětšeno pro větší mezeru od navbaru */
+        height: auto; 
+        min-height: 100vh;
+        align-items: flex-start;
+    }
+    .hero-content { 
+        margin-top: 30px; /* Přidáno dodatečné odsazení samotného textu */
+    }
+
+    /* ... zbytek tvého kódu ... */
+}
+
             .hero h1 { font-size: 3.5rem; }
             .trainer-card { flex-direction: column; }
             .trainer-img { min-height: 300px; }
@@ -465,16 +420,15 @@
             .nav-menu.active { right: 0; }
             .hamburger { display: block; }
             
-            /* Na tabletu bude první karta taky normálně, nebo přes 2 sloupce */
             .services-wrapper { grid-template-columns: 1fr 1fr; }
             .service-card:nth-child(1) { grid-column: span 2; }
         }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .contact-container { grid-template-columns: 1fr; padding: 30px; } /* Na mobilu pod sebe */
+            .contact-container { grid-template-columns: 1fr; padding: 30px; }
             .pricing-card.featured { transform: scale(1); }
             
-            /* Na mobilu vše pod sebe */
             .services-wrapper { grid-template-columns: 1fr; }
             .service-card:nth-child(1) { 
                 grid-column: span 1; 
@@ -482,6 +436,7 @@
                 text-align: center;
             }
             .service-card:nth-child(1) i { margin-right: 0; margin-bottom: 20px; }
+            .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
         }
     </style>
 </head>
@@ -593,13 +548,10 @@
         <div class="container">
             <div class="section-header reveal">
                 <h2>Ceník <span>Permanentek</span></h2>
-                <p>
-                    Vyber si permanentku nebo kreditní balíček, který ti sedí nejvíc. Vše jednoduše online.
-                </p>
+                <p>Vyber si permanentku nebo kreditní balíček, který ti sedí nejvíc. Vše jednoduše online.</p>
             </div>
 
             <div class="pricing-grid">
-                
                 <div class="price-card reveal">
                     <div class="price-header">
                         <h3>Permanentka Skupina</h3>
@@ -656,35 +608,28 @@
 
             <div class="reveal" style="margin-top: 40px; background: var(--color-bg-card); padding: 40px 30px; border-radius: 10px; border: 1px solid #333;">
                 <h3 style="text-align:center; color:#fff; margin-bottom: 30px;">Kolik se strhává za trénink?</h3>
-                
                 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; text-align: center; margin-bottom: 40px;">
-                    
                     <div style="flex: 1; min-width: 200px;">
                         <i class="fas fa-users" style="color:var(--color-primary); font-size: 1.5rem; margin-bottom: 10px;"></i>
                         <h4 style="color:#fff; margin-bottom: 5px;">Skupinová lekce</h4>
                         <p style="color:#aaa;">1 Vstup<br><small>(nebo 250 kreditů)</small></p>
                     </div>
-
                     <div style="flex: 1; min-width: 200px; border-left: 1px solid #333; border-right: 1px solid #333;">
                         <i class="fas fa-people-group" style="color:var(--color-primary); font-size: 1.5rem; margin-bottom: 10px;"></i>
                         <h4 style="color:#fff; margin-bottom: 5px;">Osobní 1:3</h4>
                         <p style="color:#aaa;">350 kreditů / os.</p>
                     </div>
-
                     <div style="flex: 1; min-width: 200px; border-right: 1px solid #333;">
                         <i class="fas fa-user-group" style="color:var(--color-primary); font-size: 1.5rem; margin-bottom: 10px;"></i>
                         <h4 style="color:#fff; margin-bottom: 5px;">Osobní 1:2</h4>
                         <p style="color:#aaa;">450 kreditů / os.</p>
                     </div>
-
                     <div style="flex: 1; min-width: 200px;">
                         <i class="fas fa-user" style="color:var(--color-primary); font-size: 1.5rem; margin-bottom: 10px;"></i>
                         <h4 style="color:#fff; margin-bottom: 5px;">Osobní 1:1</h4>
                         <p style="color:#aaa;">600 kreditů</p>
                     </div>
-
                 </div>
-                
                 <div style="text-align: center;">
                     <p style="color: #ccc; margin-bottom: 20px;">Jsi připraven? Nakup permanentku a rezervuj si termín.</p>
                     <a href="https://bbgym.isportsystem.cz/" target="_blank" class="btn btn-filled" style="padding: 20px 50px; font-size: 1.2rem; box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);">
@@ -692,7 +637,6 @@
                     </a>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -726,7 +670,7 @@
                 <div class="gallery-item reveal" data-index="6"><img src="images/foto8.jpeg" alt="BBgym 8"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
                 <div class="gallery-item reveal" data-index="7"><img src="images/foto9.jpeg" alt="BBgym 9"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
                 <div class="gallery-item reveal" data-index="8"><img src="images/foto10.jpeg" alt="BBgym 10"><div class="overlay"><i class="fas fa-search-plus"></i></div></div>
-                </div>
+            </div>
         </div>
     </section>
 
@@ -750,13 +694,12 @@
                 <h2>Kontaktuj <span>Nás</span></h2>
                 <p>Zavolej, napiš, nebo se stav podívat. Jsme tu pro tebe.</p>
             </div>
-
             <div class="contact-container reveal">
                 <div class="contact-info-box">
                     <div style="display: flex; flex-direction: column; gap: 20px;">
                         <div class="info-row">
                             <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="info-text"><h4>Adresa</h4><a href="https://maps.google.com/?q=Dělnická+234,+Kladno" target="_blank">Dělnická 234, 272 01 Kladno<br>Czech Republic</a></div>
+                            <div class="info-text"><h4>Adresa</h4><a href="https://maps.google.com/?q=Dělnická 234, 272 01 Kladno" target="_blank">Dělnická 234, 272 01 Kladno<br>Czech Republic</a></div>
                         </div>
                         <div class="info-row">
                             <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
@@ -771,18 +714,16 @@
                             <div class="info-text"><h4>Email</h4><a href="mailto:filiptokarcik@seznam.cz">filiptokarcik@seznam.cz</a></div>
                         </div>
                     </div>
-
                     <div class="map-container">
-                       <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Dělnická+234,+Kladno&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+                       <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Dělnická%20234,%20272%2001%20Kladno&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
                     </div>
                 </div>
-
                 <div class="contact-form">
                     <h3 style="text-align:center; margin-bottom:20px; color:white;">Napiš nám</h3>
                     <form>
                         <input type="text" class="form-control" placeholder="Tvé jméno" required>
                         <input type="email" class="form-control" placeholder="Tvůj email" required>
-                        <input type="text" class="form-control" placeholder="Předmět zprávy (na co se chceš zeptat?)" required>
+                        <input type="text" class="form-control" placeholder="Předmět zprávy" required>
                         <textarea class="form-control" placeholder="Zpráva..."></textarea>
                         <button type="submit" class="btn btn-filled" style="width: 100%;">Odeslat</button>
                     </form>
@@ -797,7 +738,7 @@
                 <div class="footer-col">
                     <h4>BBgym Kladno</h4>
                     <p style="color:#a0a0a0; font-size:0.9rem; line-height: 1.6;">
-                        BBgym Kladno není jen obyčejná posilovna, je to tvůj osobní prostor pro změnu. Zakládáme si na rodinné a přátelské atmosféře, kde se nikdo na nikoho nepovyšuje. Nabízíme špičkové vybavení, maximální soukromí s limitem 4 osob a trenéra, který je tu skutečně pro tebe.
+                        BBgym Kladno není jen obyčejná posilovna, je to tvůj osobní prostor pro změnu. Zakládáme si na rodinné a přátelské atmosféře. Nabízíme špičkové vybavení, maximální soukromí s limitem 4 osob a trenéra, který je tu skutečně pro tebe.
                     </p>
                 </div>
                 <div class="footer-col">
@@ -866,7 +807,7 @@
             cursorDot.style.top = `${posY}px`;
             cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
         });
-        const hoverables = document.querySelectorAll('a, button, .accordion-header, .gallery-item');
+        const hoverables = document.querySelectorAll('a, button, .gallery-item');
         hoverables.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
